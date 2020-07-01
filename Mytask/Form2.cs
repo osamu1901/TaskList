@@ -32,9 +32,14 @@ namespace Mytask
             Task_textBox1.ReadOnly = true;
             Task_textBox1.Enabled = false;
             TaskInput_checkBox1.Checked = false;
+            Task_dateTimePicker1.Value = DateTime.Now;
+            Task_dateTimePicker1.Enabled = false;
+            TimecheckBox1.Checked = false;
+            TimeSelect_comboBox1.Enabled = false;
+            Timeset_button1.Enabled = false;
 
             TaskItemLoad();
-            
+            ScheduledTime_Load();
         }
 
         private void TaskEntrybutton1_Click(object sender, EventArgs e)
@@ -77,9 +82,18 @@ namespace Mytask
                 Tasklist_comboBox1.SelectedIndex = -1;
             }
 
+            if(TimecheckBox1.Checked == true)
+            {
+                stime = "";
+                TimecheckBox1.Checked = false;
+                Task_dateTimePicker1.Enabled = false;
+                TimeSelect_comboBox1.Enabled = false;
+                TimeSelect_comboBox1.SelectedIndex = -1;
+                Timeset_button1.Enabled = false;
+            }
+
             Task_dateTimePicker1.Value = DateTime.Now;
 
-            stime = "";
             spriority = "";
         }
 
@@ -87,7 +101,7 @@ namespace Mytask
         {
             string sendtime = "";
 
-            if (TimecheckBox1.Checked == true)
+            if (TimecheckBox1.Checked == false)
             {
                 sendtime = "";
             }
@@ -128,30 +142,38 @@ namespace Mytask
 
             string filepath = Properties.Settings.Default.ListPath;
 
-            StreamReader reader = new StreamReader(filepath, Encoding.GetEncoding("UTF-8"));
-
-            while (!reader.EndOfStream)
+            if (File.Exists(filepath))
             {
-                string[] sline = reader.ReadLine().Split(new string[] { "\r\n" }, StringSplitOptions.None);
+                StreamReader reader = new StreamReader(filepath, Encoding.GetEncoding("UTF-8"));
 
-                tlist.AddRange(sline);
+                while (!reader.EndOfStream)
+                {
+                    string[] sline = reader.ReadLine().Split(new string[] { "\r\n" }, StringSplitOptions.None);
+
+                    tlist.AddRange(sline);
+                }
+
+                foreach (string titem in tlist)
+                {
+                    Tasklist_comboBox1.Items.Add(titem);
+                }
+
+                Graphics g = Tasklist_comboBox1.CreateGraphics();
+
+                int max = 0;
+
+                foreach (string item in Tasklist_comboBox1.Items)
+                {
+                    max = (int)Math.Max(max, g.MeasureString(item, Tasklist_comboBox1.Font).Width);
+                }
+
+                Tasklist_comboBox1.Width = max + 10;
             }
-
-            foreach (string titem in tlist)
+            else
             {
-                Tasklist_comboBox1.Items.Add(titem);
+                MessageBox.Show("指定されたパスにTaskList.txtが存在しません");
+                Application.Exit();
             }
-
-            Graphics g = Tasklist_comboBox1.CreateGraphics();
-
-            int max = 0;
-
-            foreach(string item in Tasklist_comboBox1.Items)
-            {
-                max = (int)Math.Max(max, g.MeasureString(item, Tasklist_comboBox1.Font).Width);
-            }
-
-            Tasklist_comboBox1.Width = max + 20;
         }
 
         private void TaskInput_checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -197,6 +219,63 @@ namespace Mytask
             }
 
             return senditem;
+        }
+
+        private void TimecheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if(TimecheckBox1.Checked == true)
+            {
+                Task_dateTimePicker1.Enabled = true;
+                TimeSelect_comboBox1.Enabled = true;
+                Timeset_button1.Enabled = true;
+            }
+            else
+            {
+                Task_dateTimePicker1.Enabled = false;
+                TimeSelect_comboBox1.Enabled = false;
+                Timeset_button1.Enabled = false;
+            }
+        }
+
+        private void ScheduledTime_Load()
+        {
+            string stime = Properties.Settings.Default.ScheduledTime;
+            string[] stline = stime.Split(',');
+
+            foreach (string stitem in stline)
+            {
+                string initem = stitem + "分後";
+                TimeSelect_comboBox1.Items.Add(initem);
+            }
+
+            Graphics g = TimeSelect_comboBox1.CreateGraphics();
+
+            int max = 0;
+
+            foreach (string item in TimeSelect_comboBox1.Items)
+            {
+                max = (int)Math.Max(max, g.MeasureString(item, TimeSelect_comboBox1.Font).Width);
+            }
+
+            TimeSelect_comboBox1.Width = max + 20;
+
+        }
+
+        private void Timeset_button1_Click(object sender, EventArgs e)
+        {
+            if (TimeSelect_comboBox1.SelectedIndex == -1)
+            {
+                MessageBox.Show("時間を選択してください");
+            }
+            else
+            {
+                int stm = int.Parse(TimeSelect_comboBox1.SelectedItem.ToString().Replace("分後", ""));
+
+                Task_dateTimePicker1.Value = Task_dateTimePicker1.Value.AddMinutes(stm);
+
+                TimeSelect_comboBox1.SelectedIndex = -1;
+            }
+
         }
     }
 }

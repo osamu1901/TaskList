@@ -3,7 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="ListPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Users\Owner\Desktop\Mytask\Mytask\bin\Release\TaskList.txt</Value>
+      <Value Profile="(Default)">C:\Users\Owner\source\repos\Mytask\Mytask\bin\Release\TaskList.txt</Value>
+    </Setting>
+    <Setting Name="ScheduledTime" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10,15,20,30,60</Value>
     </Setting>
   </Settings>
 </SettingsFile>

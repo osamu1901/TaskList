@@ -25,13 +25,25 @@ namespace Mytask.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Owner\\Desktop\\Mytask\\Mytask\\bin\\Release\\TaskList.txt")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Owner\\source\\repos\\Mytask\\Mytask\\bin\\Release\\TaskList.txt")]
         public string ListPath {
             get {
                 return ((string)(this["ListPath"]));
             }
             set {
                 this["ListPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10,15,20,30,60")]
+        public string ScheduledTime {
+            get {
+                return ((string)(this["ScheduledTime"]));
+            }
+            set {
+                this["ScheduledTime"] = value;
             }
         }
     }
