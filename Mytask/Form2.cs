@@ -21,10 +21,14 @@ namespace Mytask
         {
             form1 = f;
             InitializeComponent();
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             PrioritycomboBox1.Items.Add("高");
             PrioritycomboBox1.Items.Add("中");
             PrioritycomboBox1.Items.Add("低");
@@ -38,6 +42,7 @@ namespace Mytask
             TimeSelect_comboBox1.Enabled = false;
             Timeset_button1.Enabled = false;
 
+            
             TaskItemLoad();
             ScheduledTime_Load();
         }
@@ -276,6 +281,27 @@ namespace Mytask
                 TimeSelect_comboBox1.SelectedIndex = -1;
             }
 
+        }
+
+        private void Reset_button1_Click(object sender, EventArgs e)
+        {
+            Tasklist_comboBox1.SelectedIndex = -1;
+            PrioritycomboBox1.SelectedIndex = -1;
+            Task_textBox1.ReadOnly = true;
+            Task_textBox1.Enabled = false;
+            Task_textBox1.Text = "";
+            TaskInput_checkBox1.Checked = false;
+            Task_dateTimePicker1.Enabled = false;
+            TimeSelect_comboBox1.Enabled = false;
+            Timeset_button1.Enabled = false;
+            Task_dateTimePicker1.Value = DateTime.Now;
+            TimecheckBox1.Checked = false;
+        }
+
+        private void Close_button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            form1.Show();
         }
     }
 }

@@ -40,6 +40,8 @@
             this.TaskInput_checkBox1 = new System.Windows.Forms.CheckBox();
             this.Timeset_button1 = new System.Windows.Forms.Button();
             this.TimeSelect_comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Reset_button1 = new System.Windows.Forms.Button();
+            this.Close_button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Task_textBox1
@@ -65,7 +67,7 @@
             // TaskEntrybutton1
             // 
             this.TaskEntrybutton1.Font = new System.Drawing.Font("MS UI Gothic", 11F);
-            this.TaskEntrybutton1.Location = new System.Drawing.Point(22, 227);
+            this.TaskEntrybutton1.Location = new System.Drawing.Point(285, 196);
             this.TaskEntrybutton1.Name = "TaskEntrybutton1";
             this.TaskEntrybutton1.Size = new System.Drawing.Size(107, 48);
             this.TaskEntrybutton1.TabIndex = 3;
@@ -172,11 +174,35 @@
             this.TimeSelect_comboBox1.Size = new System.Drawing.Size(56, 24);
             this.TimeSelect_comboBox1.TabIndex = 13;
             // 
+            // Reset_button1
+            // 
+            this.Reset_button1.Font = new System.Drawing.Font("MS UI Gothic", 12F);
+            this.Reset_button1.Location = new System.Drawing.Point(33, 229);
+            this.Reset_button1.Name = "Reset_button1";
+            this.Reset_button1.Size = new System.Drawing.Size(87, 48);
+            this.Reset_button1.TabIndex = 14;
+            this.Reset_button1.Text = "リセット";
+            this.Reset_button1.UseVisualStyleBackColor = true;
+            this.Reset_button1.Click += new System.EventHandler(this.Reset_button1_Click);
+            // 
+            // Close_button1
+            // 
+            this.Close_button1.Font = new System.Drawing.Font("MS UI Gothic", 12F);
+            this.Close_button1.Location = new System.Drawing.Point(156, 229);
+            this.Close_button1.Name = "Close_button1";
+            this.Close_button1.Size = new System.Drawing.Size(87, 48);
+            this.Close_button1.TabIndex = 15;
+            this.Close_button1.Text = "閉じる";
+            this.Close_button1.UseVisualStyleBackColor = true;
+            this.Close_button1.Click += new System.EventHandler(this.Close_button1_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(403, 308);
+            this.Controls.Add(this.Close_button1);
+            this.Controls.Add(this.Reset_button1);
             this.Controls.Add(this.TimeSelect_comboBox1);
             this.Controls.Add(this.Timeset_button1);
             this.Controls.Add(this.TaskInput_checkBox1);
@@ -190,7 +216,7 @@
             this.Controls.Add(this.Task_dateTimePicker1);
             this.Controls.Add(this.Task_textBox1);
             this.Name = "Form2";
-            this.Text = "Form2";
+            this.Text = "タスク入力画面";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -211,5 +237,7 @@
         private System.Windows.Forms.CheckBox TaskInput_checkBox1;
         private System.Windows.Forms.Button Timeset_button1;
         private System.Windows.Forms.ComboBox TimeSelect_comboBox1;
+        private System.Windows.Forms.Button Reset_button1;
+        private System.Windows.Forms.Button Close_button1;
     }
 }

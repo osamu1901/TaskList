@@ -15,10 +15,13 @@ namespace Mytask
         public Form1()
         {
             InitializeComponent();
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.MaximizeBox = false;
             TasklistView1.View = View.Details;
             TasklistView1.Columns.Add("",20);
             TasklistView1.Columns.Add("優先順位",150,HorizontalAlignment.Center);
