@@ -63,7 +63,7 @@ namespace Mytask
         {
             foreach (ListViewItem citem in TasklistView1.CheckedItems)
             {
-                citem.BackColor = Color.Gray;
+                citem.BackColor = Color.LightGray;
             }
         }
 
