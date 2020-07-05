@@ -50,20 +50,20 @@ namespace Mytask
                 }
             }
         }
-
-        private void TasklistView1_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            foreach (ListViewItem citem in TasklistView1.CheckedItems)
-            {
-                citem.BackColor = Color.White;
-            }
-        }
-
+                
         private void TasklistView1_ItemChecked(object sender, ItemCheckedEventArgs e)
         {
-            foreach (ListViewItem citem in TasklistView1.CheckedItems)
+            foreach (ListViewItem citem in TasklistView1.Items)
             {
-                citem.BackColor = Color.LightGray;
+                if (citem.Checked)
+                {
+                    citem.BackColor = Color.LightGray;
+                }
+                else
+                {
+                    citem.BackColor = Color.White;
+                }
+                
             }
         }
 

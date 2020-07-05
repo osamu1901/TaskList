@@ -43,7 +43,6 @@
             this.TasklistView1.Size = new System.Drawing.Size(675, 217);
             this.TasklistView1.TabIndex = 0;
             this.TasklistView1.UseCompatibleStateImageBehavior = false;
-            this.TasklistView1.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.TasklistView1_ItemCheck);
             this.TasklistView1.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.TasklistView1_ItemChecked);
             // 
             // Task_Form_Load

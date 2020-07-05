@@ -81,6 +81,7 @@ namespace Mytask
                 Task_textBox1.ReadOnly = true;
                 TaskInput_checkBox1.Checked = false;
                 Task_textBox1.Enabled = false;
+                Tasklist_comboBox1.Enabled = true;
             }
             else
             {
@@ -187,11 +188,14 @@ namespace Mytask
             {
                 Task_textBox1.ReadOnly = false;
                 Task_textBox1.Enabled = true;
+                Tasklist_comboBox1.SelectedIndex = -1;
+                Tasklist_comboBox1.Enabled = false;
             }
             else
             {
                 Task_textBox1.ReadOnly = true;
                 Task_textBox1.Enabled = false;
+                Tasklist_comboBox1.Enabled = true;
             }
 
         }
