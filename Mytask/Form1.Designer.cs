@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.TasklistView1 = new System.Windows.Forms.ListView();
             this.Task_Form_Load = new System.Windows.Forms.Button();
             this.Task_Delete_button = new System.Windows.Forms.Button();
             this.task_Allselect_button = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // TasklistView1
@@ -78,6 +80,10 @@
             this.task_Allselect_button.UseVisualStyleBackColor = true;
             this.task_Allselect_button.Click += new System.EventHandler(this.task_Allselect_button_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -100,6 +106,7 @@
         private System.Windows.Forms.Button Task_Delete_button;
         internal System.Windows.Forms.ListView TasklistView1;
         private System.Windows.Forms.Button task_Allselect_button;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

@@ -28,6 +28,8 @@ namespace Mytask
             TasklistView1.Columns.Add("タスク", 350, HorizontalAlignment.Center);
             TasklistView1.Columns.Add("予定時間", 150, HorizontalAlignment.Center);
             TasklistView1.CheckBoxes = true;
+            timer1.Interval = 1000;
+            timer1.Enabled = true;
         }
 
         private void Task_Form_Load_Click(object sender, EventArgs e)
@@ -72,6 +74,21 @@ namespace Mytask
             foreach(ListViewItem sitem in TasklistView1.Items)
             {
                 sitem.Checked = true;
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+           foreach(ListViewItem item in TasklistView1.Items)
+            {
+                if(item.Checked == false && item.SubItems[3].Text != "")
+                {
+                    if(DateTime.Now.ToString("HH:mm") == item.SubItems[3].Text && DateTime.Now.Second == 0)
+                    {
+                        MessageBox.Show(item.SubItems[2].Text,"タスク確認");
+                    }
+                    
+                }
             }
         }
     }
